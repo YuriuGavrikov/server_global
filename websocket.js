@@ -3,9 +3,9 @@ import WebSocket, { WebSocketServer } from "ws";
 export function WebSocketFu() {
 	const wss = new WebSocketServer(
 		{
-			port: 5050,
+			port: 6000,
 		},
-		() => console.log(`Server started on 5050`)
+		() => console.log(`Server started on 6000`)
 	);
 
 	wss.on("connection", function connection(WebSocket) {
