@@ -1,7 +1,7 @@
 import TelegramApi from "node-telegram-bot-api";
 import cron from "node-cron";
 
-export function botFu() {
+export function BotFu() {
 	const TOKEN = "6421481723:AAGecmtKjMac1rE9aRD9F3gfuOJ0hc28bsk";
 
 	const bot = new TelegramApi(TOKEN, { polling: true, parse_mode: "HTML" });

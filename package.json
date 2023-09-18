@@ -7,17 +7,20 @@
 	"scripts": {
 		"dev": "nodemon index.js",
 		"devBot": "nodemon bot.js",
-		"devWs": "nodemon websocket.js",
+		"devio": "nodemon socketIO.js",
 		"start": "node index.js",
 		"startBot": "node bot.js",
-		"startWs": "node websocket.js"
+		"startio": "node socketIO.js"
 	},
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"cors": "^2.8.5",
+		"express": "^4.18.2",
+		"socket.io": "^4.7.2",
+		"ws": "^8.14.1",
 		"node-cron": "^3.0.2",
 		"node-telegram-bot-api": "^0.61.0",
-		"nodemon": "^3.0.1",
-		"ws": "^8.14.1"
+		"nodemon": "^3.0.1"
 	}
 }
