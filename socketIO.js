@@ -12,7 +12,9 @@ export function WebSocketFu() {
 	});
 
 	io.on("connection", (socket) => {
+		console.log("connect");
 		socket.on("message", (msg) => {
+			console.log("message");
 			io.emit("message", msg);
 		});
 	});
