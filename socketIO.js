@@ -18,7 +18,7 @@ export function WebSocketFu() {
 		});
 	});
 
-	server.listen(3030, () => {
+	server.listen(5060, () => {
 		console.log("server running at port 3030");
 	});
 }
