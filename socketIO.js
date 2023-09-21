@@ -1,6 +1,7 @@
 import express from "express";
 import { createServer } from "node:http";
 import { Server } from "socket.io";
+import cors from "cors";
 
 export function WebSocketFu() {
 	const app = express();
