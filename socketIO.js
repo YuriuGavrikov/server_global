@@ -8,7 +8,10 @@ export function WebSocketFu() {
 
 	const io = new Server(server, {
 		cors: {
-			origin: "*",
+			origin: [
+				"https://yuriugavrikov.github.io/Chat-vue-socketio/",
+				"https://yuriugavrikov.github.io",
+			],
 			methods: ["GET", "POST"],
 		},
 	});
