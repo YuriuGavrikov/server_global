@@ -7,8 +7,8 @@ export function WebSocketFu() {
 	const server = createServer(app);
 	const io = new Server(server, {
 		cors: {
-			origin: "http://localhost:5173/Chat-vue-socketio/",
-			// origin: "http://yuriugavrikov.github.io/Chat-vue-socketio/",
+			origin: "http://localhost:5173",
+			// origin: "https://yuriugavrikov.github.io/Chat-vue-socketio/",
 		},
 	});
 
@@ -18,7 +18,7 @@ export function WebSocketFu() {
 		});
 	});
 
-	server.listen(5060, () => {
-		console.log("server running at port 3030");
+	server.listen(3000, () => {
+		console.log("server running at port 3000");
 	});
 }
