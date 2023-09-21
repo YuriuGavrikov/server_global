@@ -23,6 +23,7 @@ export function WebSocketFu() {
 
 	const app = express();
 	app.use(cors({ origin: "*" }));
+	app.use(router);
 
 	const server = createServer(app);
 
