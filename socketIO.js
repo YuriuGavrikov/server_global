@@ -9,7 +9,7 @@ export function WebSocketFu() {
 	const app = express();
 	app.use(
 		cors({
-			origin: "http://localhost:5173",
+			origin: "*",
 		})
 	);
 
@@ -19,7 +19,6 @@ export function WebSocketFu() {
 		cors: {
 			origin: "*",
 			methods: ["GET", "POST"],
-			credentials: true,
 		},
 	});
 
