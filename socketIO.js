@@ -3,7 +3,7 @@ import { createServer } from "node:http";
 import { Server } from "socket.io";
 // import cors from "cors";
 
-const PORT = 3000;
+const PORT = 3030;
 
 export function WebSocketFu() {
 	const app = express();
