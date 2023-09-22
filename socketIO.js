@@ -7,7 +7,14 @@ const PORT = 3030;
 
 export function WebSocketFu() {
 	const app = express();
+	app.use(
+		cors({
+			origin: "http://localhost:5173",
+		})
+	);
+
 	const server = createServer(app);
+
 	const io = new Server(server, {
 		cors: {
 			origin: "*",
@@ -15,12 +22,6 @@ export function WebSocketFu() {
 			credentials: true,
 		},
 	});
-
-	// app.use(
-	// 	cors({
-	// 		origin: "http://localhost:5173",
-	// 	})
-	// );
 
 	io.on("connection", (socket) => {
 		console.log("connection");
