@@ -6,11 +6,8 @@ import cors from "cors";
 const PORT = 3030;
 
 export function WebSocketFu() {
-	app.get("/test", function (req, res, next) {
-		res.json("This is CORS-enabled for all origins!");
-	});
-
 	const app = express();
+
 	app.use(
 		cors({
 			origin: "*",
@@ -22,6 +19,10 @@ export function WebSocketFu() {
 	);
 
 	const server = createServer(app);
+
+	app.get("/", (req, res) => {
+		res.send("<h1>Hello world</h1>");
+	});
 
 	const io = new Server(server, {
 		cors: {
