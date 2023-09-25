@@ -17,6 +17,10 @@ export function WebSocketFu() {
 
 	const server = createServer(app);
 
+	app.get("/", (req, res) => {
+		res.send("Hello world");
+	});
+
 	const io = new Server(server, {
 		cors: {
 			origin: "*",
