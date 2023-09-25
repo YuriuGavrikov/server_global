@@ -12,27 +12,16 @@ export function WebSocketFu() {
 		cors({
 			origin: "*",
 			methods: ["GET", "POST"],
-			allowedHeaders: ["*"],
-			transports: ["websocket", "polling"],
-			credentials: true,
 		})
 	);
 
 	const server = createServer(app);
 
-	app.get("/", (req, res) => {
-		res.send("<h1>Hello world</h1>");
-	});
-
 	const io = new Server(server, {
 		cors: {
 			origin: "*",
 			methods: ["GET", "POST"],
-			allowedHeaders: ["*"],
-			transports: ["websocket", "polling"],
-			credentials: true,
 		},
-		allowEIO3: true,
 	});
 
 	io.on("connection", (socket) => {
