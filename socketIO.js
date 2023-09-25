@@ -7,7 +7,15 @@ const PORT = 3030;
 
 export function WebSocketFu() {
 	const app = express();
-	app.use(cors());
+	app.use(
+		cors({
+			origin: "*",
+			methods: ["GET", "POST"],
+			allowedHeaders: ["*"],
+			transports: ["websocket", "polling"],
+			credentials: true,
+		})
+	);
 
 	const server = createServer(app);
 
