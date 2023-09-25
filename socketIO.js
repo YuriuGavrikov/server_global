@@ -14,7 +14,12 @@ export function WebSocketFu() {
 	const io = new Server(server, {
 		cors: {
 			origin: "*",
+			methods: ["GET", "POST"],
+			allowedHeaders: ["*"],
+			transports: ["websocket", "polling"],
+			credentials: true,
 		},
+		allowEIO3: true,
 	});
 
 	io.on("connection", (socket) => {
