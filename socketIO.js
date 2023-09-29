@@ -29,14 +29,12 @@ export function WebSocketFu() {
 	});
 
 	io.on("connection", (socket) => {
-		console.log("connection");
 		socket.on("message", (msg) => {
-			console.log("message");
 			io.emit("message", msg);
 		});
-		socket.on("disconnect", (reason) => {
-			console.log("disconnect", reason);
-		});
+		// socket.on("disconnect", (reason) => {
+		// 	console.log("disconnect", reason);
+		// });
 	});
 
 	server.listen(PORT, (error) => {
