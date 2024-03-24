@@ -3,13 +3,13 @@ import cron from "node-cron";
 
 export function BotFu() {
   //Ключ к боту
-  const TOKEN = "6421481723:AAGecmtKjMac1rE9aRD9F3gfuOJ0hc28bsk";
+  const TOKEN_BOT = "6421481723:AAGecmtKjMac1rE9aRD9F3gfuOJ0hc28bsk";
 
   //Ключи к погоде
-  const API_KEY_WEATHER = "55ab1ec4e25b6c808fd1b9f730101ee2";
+  const API_KEY_WEATHER = "6d32616ae4bdb387464c740cb29580f4";
   const BASE_URL_WEATHER = "https://api.openweathermap.org/data/2.5/weather";
 
-  const bot = new TelegramApi(TOKEN, { polling: true, parse_mode: "HTML" });
+  const bot = new TelegramApi(TOKEN_BOT, { polling: true, parse_mode: "HTML" });
 
   //Обьект с данными о состоянии уведомления в чате
   const activeChats = new Map();
@@ -62,7 +62,7 @@ export function BotFu() {
     const name = msg.from.first_name;
 
     const getUsers = new Promise(function (resolve, reject) {
-      //Получает всех юзеров в чате кроме ботов
+      //Получает всех юзеров(админов) в чате кроме ботов
       const users = [];
 
       if (/^-/.test(chatId)) {
@@ -133,16 +133,19 @@ export function BotFu() {
       }
     }
     if (text === "/getweather" || text === "/getweather@the_gnzd_bot") {
-      const arrCity = ["Moscow", "Saint Petersburg", "Tbilisi"];
+      const arrCity = ["Москва", "Санкт-Петербург", "Тбилиси"];
       const arrWeather = [];
 
       function getWeather(city) {
         return fetch(
-          `${BASE_URL_WEATHER}?q=${city}&units=metric&appid=${API_KEY_WEATHER}`
+          `${BASE_URL_WEATHER}?q=${city}&units=metric&appid=${API_KEY_WEATHER}&lang=ru`
         )
           .then((response) => response.json())
           .then(
-            (data) => `<b>${city}</b> ( ${Math.round(data?.main?.temp)}°С )`
+            (data) =>
+              `<b>${city}</b> | ${Math.round(data?.main?.temp)}°С | ${
+                data?.weather[0]?.description
+              }`
           );
       }
 
@@ -151,8 +154,8 @@ export function BotFu() {
         if (arrWeather.length === arrCity.length) {
           bot.sendMessage(
             chatId,
-            `Погода: 
-${arrWeather.join(" || ")}`,
+            `☀ Погода ☀
+${arrWeather.join("\n")}`,
             { parse_mode: "HTML" }
           );
         }
