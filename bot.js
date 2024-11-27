@@ -50,10 +50,6 @@ export function BotFu() {
       command: "/offtimetotalk",
       description: "Отключить уведомление о кружке",
     },
-    {
-      command: "/getweather",
-      description: "Какая погода?",
-    },
   ]);
 
   bot.on("message", async (msg) => {
@@ -131,35 +127,6 @@ export function BotFu() {
           }
         }
       }
-    }
-    if (text === "/getweather" || text === "/getweather@the_gnzd_bot") {
-      const arrCity = ["Москва", "Санкт-Петербург", "Тбилиси"];
-      const arrWeather = [];
-
-      function getWeather(city) {
-        return fetch(
-          `${BASE_URL_WEATHER}?q=${city}&units=metric&appid=${API_KEY_WEATHER}&lang=ru`
-        )
-          .then((response) => response.json())
-          .then(
-            (data) =>
-              `<b>${city}</b> | ${Math.round(data?.main?.temp)}°С | ${
-                data?.weather[0]?.description
-              }`
-          );
-      }
-
-      arrCity.forEach(async (city) => {
-        await getWeather(city).then((value) => arrWeather.push(value));
-        if (arrWeather.length === arrCity.length) {
-          bot.sendMessage(
-            chatId,
-            `☀ Погода ☀
-${arrWeather.join("\n")}`,
-            { parse_mode: "HTML" }
-          );
-        }
-      });
     }
   });
 }

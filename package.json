@@ -9,6 +9,8 @@
 		"devBot": "nodemon bot.js",
 		"devio": "nodemon socketIO.js",
 		"start": "node index.js",
+		"pm2Start": "pm2 start index.js",
+		"pm2Stop": "pm2 stop index.js",
 		"startBot": "node bot.js",
 		"startio": "node socketIO.js"
 	},
